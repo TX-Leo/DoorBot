@@ -1,0 +1,31 @@
+# lever and doorknob
+https://universe.roboflow.com/re-yj1gy/door-handle-lever-type
+https://universe.roboflow.com/yolov8custom-q7pqt/door-knob
+https://universe.roboflow.com/julien-vadeboncoeur-xvuem/door-handle-segmentation
+https://universe.roboflow.com/clothcompetition/door_seg-ksmev
+https://universe.roboflow.com/zongyun-eb5xj/kong-opkiq
+https://universe.roboflow.com/objectdetection-wnjmf/door_handle-rtcme
+https://universe.roboflow.com/new-workspace-secnu/yolov3-wodvx
+https://universe.roboflow.com/personal-nmlg7/doorknob-5yfez
+https://universe.roboflow.com/mirsee/door-handle-simple-datasets-6pmmd
+https://universe.roboflow.com/mirsee/door-handle-datasets
+https://universe.roboflow.com/practicas-eoqqx/door-handle-gae85
+https://universe.roboflow.com/seongbin/door_project
+https://universe.roboflow.com/roboflow-y1uiq/door-handle.2
+https://universe.roboflow.com/lucbfh/doorhandle-hjqyf
+https://universe.roboflow.com/julien-vadeboncoeur-xvuem/copyright-dataset
+https://universe.roboflow.com/re-yj1gy/door-handle-lever-type
+https://universe.roboflow.com/door-5w1oq/door-pk4of
+https://universe.roboflow.com/knob-detection/knob-finder-6vyn2
+https://universe.roboflow.com/taynamcua/door-handles
+https://universe.roboflow.com/kiki-way-pvjv6/door-lever
+https://universe.roboflow.com/ros2/doorv2
+
+# crossbar
+https://universe.roboflow.com/iit-gofu8/doors-open-and-closed
+https://universe.roboflow.com/indoor5/final-indoor
+
+# drawer
+https://universe.roboflow.com/capstone-fjx0j/drawer-klinu
+https://universe.roboflow.com/kaganuzgoren/drawers-4pcl7
+https://universe.roboflow.com/practicas-eoqqx/drawer-s4txq

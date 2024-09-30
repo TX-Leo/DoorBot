@@ -1,0 +1,15 @@
+img_w: 640
+img_h: 640
+device: 'cuda:0'
+model_path: 'checkpoints/gum.pth'
+
+# |model2|lever+knob+drawer+crossbar|
+# |model3|lever|
+# |model5|knob|
+# |model7|drawer|
+# |model8|crossbar|
+
+# |model11|lever(only internet)|
+# |model12|doorknob(only internet)|
+# |model13|drawer(only internet)|
+# |model14|crossbar(only internet)|

@@ -1,0 +1,3 @@
+classes: 'handle'
+device: 'cuda:2'
+threshold: 0.2

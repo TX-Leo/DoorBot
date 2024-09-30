@@ -1,0 +1,4 @@
+hostname: '130.126.136.95'
+username: 'zhi'
+password: 'yourpassword'
+if_stfp: True

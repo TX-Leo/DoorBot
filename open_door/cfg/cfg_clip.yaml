@@ -1,0 +1,2 @@
+model_name: "ViT-B/32"
+device: 'cuda:0'

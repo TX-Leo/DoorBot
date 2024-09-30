@@ -1,0 +1,168 @@
+# ====================================================================== #
+# =============== Configurations for `primitive.py` ==================== #
+# ====================================================================== #
+# Tutorial for a new door
+# premove: 
+#     1. modify offset_in_front for premoving
+# grasp: 
+#     1. modify cam2base_H.csv to grasp the handle accurately (xyz, try not to modify the distance to the door)
+#     2. modify p1_depth_offset / p2_depth_offset
+# unlock:
+#     1. modify stop_l / stop_h
+# rotate
+#     1. modify stop_l / stop_h
+# open:
+#     1. modify explore_vel and linear_velocity
+#     2. modify pull_j3_l_right / pull_j3_l_left
+# swing:
+#     1. you should consider the whole action again
+
+## robot
+cfg_cam: 'cfg/cfg_cam.yaml'
+cfg_arm_right: 'cfg/cfg_arm_right.yaml'
+cfg_arm_left: 'cfg/cfg_arm_left.yaml'
+cfg_base: 'cfg/cfg_base.yaml'
+cfg_head: 'cfg/cfg_head.yaml'
+cfg_server: 'cfg/cfg_server.yaml'
+cfg_ransac: 'cfg/cfg_ransac.yaml'
+cfg_dtsam: 'cfg/cfg_dtsam.yaml'
+cfg_hgum: 'cfg/cfg_hgum.yaml'
+cfg_logger: 'cfg/cfg_logger.yaml'
+cfg_gemini: 'cfg/cfg_gemini.yaml'
+cfg_clip: 'cfg/cfg_clip.yaml'
+
+## remote
+remote_python_path: '/media/datadisk10tb/leo/anaconda3/envs/rm/bin/python'
+remote_root_dir: '/media/datadisk10tb/leo/projects/realman-robot/open_door/'
+remote_img_dir: '/media/datadisk10tb/leo/projects/realman-robot/open_door/trajectory/remote/'
+
+## primitive
+premove:
+  offset_in_front: 0.65 # m 0.5
+  d2t_coefficient: 4.8
+  linear_velocity: 0.2
+grasp:
+  grasp_v: 15
+  gripper_value: 50
+  p1_depth_offset: 0.01 # m -0.01
+  p2_depth_offset: 0.03 # m 0.06
+  grasp_dmp_refer_tjt_path_right: 'cfg/grasp_dmp_refer_tjt_right.csv'
+  grasp_dmp_middle_points_right: [95]
+  grasp_dmp_refer_tjt_path_left: 'cfg/grasp_dmp_refer_tjt_left.csv'
+  grasp_dmp_middle_points_left: [125]
+unlock:
+  unlock_v: 5
+  gripper_value_before: 500 
+  gripper_value_after: 50
+rotate:
+  rotate_v: 5
+  gripper_value: 0
+open:
+  gripper_value_pull: 50
+  explore_T: 0.5 # s
+  explore_vel: 0.2 # for base
+  open_T: 1.5 # 2 for long
+  linear_velocity: 0.2 # 0.4 for fast, >0
+  angular_velocity: 0 # 0.6 >0
+swing:
+  swing_v: 15
+  gripper_value: 1000
+  base_move_T: 0.3
+  base_move_v: 0.2
+  base_rotate_T: 0.2
+  base_rotate_v: 0.3
+  # for no rebound device
+  pos1_left: [0.587431013584137, -0.5827149748802185, -0.2525070011615753, -1.5750000476837158, -0.8769999742507935, -2.11299991607666] # for right arm(arm2)
+  pos2_left: [0.6176689863204956, -0.08367200195789337, -0.33989399671554565, -1.7860000133514404, 0.2809999883174896, -1.347000002861023] # for right arm(arm2)
+  pos1_right: [0.20024800300598145, -0.6161810159683228, 0.5455989837646484, -1.0379999876022339, 0.4440000057220459, -2.953000068664551] # for right arm(arm2)
+  pos2_right: [0.11403699964284897, -0.6866040229797363, 0.046480000019073486, -1.9730000495910645, 0.4300000071525574, 2.7860000133514404]  # for right arm(arm2)
+  # for rebound device
+  # pos2_right: [0.6291540265083313, -0.3572550117969513, -0.2838430106639862, -1.6469999551773071, -1.0219999551773071, -1.6330000162124634]  # for right arm(arm2)
+tele:
+    arm_v: 15
+    base_linear_velocity: 0.2
+    base_angular_velocity: 0.3
+home:
+  gripper_value: 1000
+  move_T: 0.5
+back:
+  gripper_value: 1000
+finish:
+  gripper_value: 1000
+  move_T: 0.5
+
+## threshold
+threshold:
+  grasp:
+    l: -15000
+    h: 15000
+  unlock:
+    l: -18000
+    h: 18000
+    stop_l_left: -4500 # mainly for joint[2] ## 3000?
+    stop_h_left: 15000
+    stop_l_right: -3000 
+    stop_h_right: 15000
+  rotate:
+    l: -18000
+    h: 18000
+    stop_l_left: -15000
+    stop_h_left: 6000 ## mainly for joint[3]
+    stop_l_right: -15000 ## -3000
+    stop_h_right: 15000 ## 
+  open:
+    l: -25000
+    h: 25000
+    pull_j3_l_right: -2000 ## -10000/-3000
+    pull_j3_l_left: -6000  ## -9000
+  swing:
+    l: -25000
+    h: 25000
+
+## primitive types
+pmts:
+  home: 0
+  premove: 1
+  grasp: 2
+  unlock: 3
+  rotate: 4
+  open: 5
+  swing: 6
+  start: 7
+  finish: 8
+  back: 9
+  clear: 10
+  teleoperation: 11
+  hlvlm: 12
+  llvlm: 13
+  capture: 14
+  telearml: 15
+  telearmr: 16
+
+## error types
+errors:
+  success: 1
+  current:
+    safety_issue: 1024
+    event_detected: 2048
+    no_issue: 4096
+  grasp:
+    grasp_safety: 0
+    grasp_no_handle: -1
+    grasp_ik_fail: -1
+    grasp_miss: -1
+  rotate:
+    rotate_safety: 0
+    rotate_miss: -1
+    rotate_ik_fail: -1
+  unlock:
+    unlock_safety: 0
+    unlock_miss: -1
+    unlock_ik_fail: -1
+  open:
+    open_safety: 0
+    open_miss: -1
+    open_fail: -1
+  swing: 
+    swing_safety: 0
+    swing_ik_fail: -1

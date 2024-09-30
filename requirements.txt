@@ -1,0 +1,4 @@
+pyserial
+paramiko
+simplejson
+clip

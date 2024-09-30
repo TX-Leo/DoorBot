@@ -1,0 +1,25 @@
+## remove background 
+1. https://www.remove.bg/upload
+2. python rembg: https://github.com/danielgatis/rembg
+3. Pixelmator Pro
+4. Preview (Apple Mac)
+
+## change transparency 
+1. https://www.plattru.com/tool/zh-cn/transparent-image
+2. Pixelmator Pro
+3. python
+
+## denoise image
+1. ai.nero.com/denoiser
+
+## compress image
+1. https://www.bejson.com/ui/compress_img/
+
+## compress pdf
+1. https://tools.pdf24.org/zh/compress-pdf
+
+## compress video
+1. https://www.freeconvert.com/zh/video-compressor
+
+## test submitted pdf
+1. https://ras.papercept.net/conferences/scripts/pdftest.pl

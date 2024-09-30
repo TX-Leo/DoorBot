@@ -1,0 +1,31 @@
+
+大寰
+
+*******使用前需要设置末端24V电源输出，切勿带电拔插末端航插。*****
+{"command":"set_tool_voltage","voltage_type":3} //设置工具端电源输出 24V
+
+配置通讯端口 ModbusRTU 模式
+{"command":"set_modbus_mode","port":1,"baudrate":115200,"timeout ":2}
+初始化夹爪
+ 执行初始化成功 （写操作）：
+ 发送 ：01 06 01 00 00 01 49 F6
+ 返回 ：01 06 01 00 00 01 49 F6
+{"command":"write_single_register","port":1,"address":256,"data":1, "device":1}  //写单个寄存器
+ 设置30% 力值 （写操作）：
+ 发送 ：01 06 01 01 00 1E 59 FE
+ 返回 ：01 06 01 01 00 1E 59 FE
+{"command":"write_single_register","port":1,"address":257,"data":30, "device":1}  //写单个寄存器
+设置 500 位置 （写操作）：
+发送 ：01 06 01 03 01 F4 78 21
+返回 ：01 06 01 03 01 F4 78 21
+{"command":"write_single_register","port":1,"address":259,"data":1000, "device":1}//写单个寄存器 运动到1000位置
+{"command":"write_single_register","port":1,"address":259,"data":500, "device":1}  //写单个寄存器 运动到500位置
+{"command":"write_single_register","port":1,"address":259,"data":0, "device":1}  //写单个寄存器 闭合
+ 读取夹持状态反馈 （读操作）：
+ 发送 ：01 03 02 01 00 01 D4 72
+ 返回 ：01 03 02 00 02 39 85（返回02 代表夹住物体）
+{"command":"read_holding_registers","port":1,"address":513,"device":1} //读保持寄存器
+读取位置状态 （读操作）：
+发送 ：01 03 02 02 00 01 24 72
+返回 ：01 03 02 xx xx crc1 crc2
+{"command":"read_holding_registers","port":1,"address":514,"device":1} //读保持寄存器

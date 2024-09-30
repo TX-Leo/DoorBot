@@ -1,0 +1,35 @@
+# /cfg/cfg_gemini.yaml
+# /open_door/dtsam_package/segment-anything/models/sam_vit_h_4b8939.pth
+
+.DS_Store
+Thumbs.db
+
+/build
+/dist
+/*.exe
+/*.dylib
+# /*.dll
+# /*.so
+
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+.idea/
+.vscode/
+*.sublime-*
+*.swp
+
+*.log
+
+*.tmp
+
+/node_modules/
+/yarn.lock
+/pip-lock.txt
+
+.env
+
+secrets.yml
+database.yml

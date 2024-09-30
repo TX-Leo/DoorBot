@@ -1,0 +1,19 @@
+# tx.leo.wz@gmail.com
+# old:
+# google_api_key: "AIzaSyDjrPovz0fMmR2ouDHRiCJZWNVJfH_CqFo"
+# new
+# google_api_key: "AIzaSyBZ0fX2GQVgKxqwMnmn_NuP8j2v29inm-U"
+
+# tx.leo.wz@gmail3.com
+# old
+google_api_key: "AIzaSyBCQ5oNI1q-bhyEl8CWcIZcCqpDJ4LsXMI"
+# new
+# google_api_key: "AIzaSyBL93mpFdDhas2RYjzwGzhyoCY2F27dE6A"
+
+# tx.leo.wz@gmail2.com
+# google_api_key: "AIzaSyCcDPr-3xS5McEH-2FNNPSZvpzrVs5Iet8"
+
+model_name: 'gemini-1.5-pro'
+max_output_tokens: 2000
+temperature: 0.9 # 0-2 bigger for more creative results
+system_instruction: ""

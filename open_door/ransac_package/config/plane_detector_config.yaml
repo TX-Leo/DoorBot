@@ -1,0 +1,83 @@
+# Configuration for `run_server.py` and `plane_detector.py`
+
+# ====================================================================== #
+# =============== Configurations for `run_server.py` =================== #
+# ====================================================================== #
+
+# -- Inputs:
+# These are set by command line arguments !!!
+# --config_file: Path to this file.
+# --depth_topic: ROS topic of the depth image.
+# --color_topic: ROS topic of the color image.
+#           The color image is only used for visualization,
+#           and has no effects on plane detection results.
+#           If this topic is empty, a black image will be used instead.
+# --camera_info: Path to camera info file. See `data/cam_params_realsense.json`.
+
+# -- Output ROS topic names:
+topic_colored_mask: "detect_plane/colored_mask" # Colored mask, which annotates each plane.
+topic_image_viz: "detect_plane/image_viz" # Visualization image, drawn witn arrows of plane normals.
+topic_result: "detect_plane/results" # msg/PlaneResults.msg
+
+# ====================================================================== #
+# ============= Configurations for `plane_detector.py` ================= #
+# ====================================================================== #
+
+
+
+# -- Data.
+
+# Set depth unit:
+# In the input depth image, if depth[i, j] is x,
+# then its real depth is (depth_unit*x) meters.
+depth_unit: 0.001
+
+# -- Algorithm (Prepare point cloud).
+
+# Reduce image size to speed up computation.
+img_resize_ratio: 0.2 # Choose from [1.0, 0.5, 0.25, 0.2, 0.1].
+
+# In depth_img, truncate pixel value to zero
+# if it's larger than this. (Unit: meter.)
+depth_trunc: 1.5
+
+# After creating point cloud, downsample the point cloud.
+# Unit: meter.
+# If the value <=0, the downsample is disabled.
+cloud_downsample_voxel_size: 0
+
+# -- Algorithm (Use RANSAC to detect plane).
+
+max_number_of_planes: 5 # Should be smaller than 5.
+
+RANSAC_config:
+  # Minimum number of points in a valid point cloud:
+  # Suppose the image size is 480/5 x 640/5 = 96 x 108,
+  #   then there are totally 12288 points.
+  #   If the plane shape relative to the image is (0.2, 0.2)
+  #   then it has approximately 400 points.
+  min_points: 800
+
+  iterations: 30 # Number of iterations in the RANSAC algorithm.
+  # More iterations cost more time, but may give better result.
+
+  # A point is considered as part of the plane
+  #   if its distance to the plane is smaller than this.
+  dist_thresh: 0.02
+
+  # After RANSAC is completed, whether print result or not.
+  is_print_res: True
+
+# -- Visualization
+visualization:
+  # Planes' colors are in this order: Red, yellow, green, cyan, purple.
+  color_map_name: "gist_rainbow"
+
+  arrow_length: 0.1 # Length of the 3D arrow drawn on 2d image. Unit: meter.
+  arrow_linewidth: 5 # Unit: pixel.　　
+  arrow_tip_length: 0.3 # Unit: pixel.
+
+# -- Debug
+debug:
+  draw_3d_point_cloud: False
+  # draw_3d_point_cloud: True
