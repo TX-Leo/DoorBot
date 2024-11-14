@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+    content="DoorBot: Closed-Loop Task Planning and Manipulation for Door Opening in the Wild with Haptic Feedback">
+  <meta name="keywords" content="Robotics, Quadruped, Whole-body Control, Whole-body Manipulation">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>
+    DoorBot: Closed-Loop Task Planning and Manipulation for Door Opening in the Wild with Haptic Feedback
+  </title>
+
+  <link rel="apple-touch-icon" sizes="57x57"
+    href="//www-media.stanford.edu/assets/favicon/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="60x60"
+    href="//www-media.stanford.edu/assets/favicon/apple-touch-icon-60x60.png" />
+  <link rel="apple-touch-icon" sizes="72x72"
+    href="//www-media.stanford.edu/assets/favicon/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="76x76"
+    href="//www-media.stanford.edu/assets/favicon/apple-touch-icon-76x76.png" />
+  <link rel="apple-touch-icon" sizes="114x114"
+    href="//www-media.stanford.edu/assets/favicon/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="120x120"
+    href="//www-media.stanford.edu/assets/favicon/apple-touch-icon-120x120.png" />
+  <link rel="apple-touch-icon" sizes="144x144"
+    href="//www-media.stanford.edu/assets/favicon/apple-touch-icon-144x144.png" />
+  <link rel="apple-touch-icon" sizes="152x152"
+    href="//www-media.stanford.edu/assets/favicon/apple-touch-icon-152x152.png" />
+  <link rel="apple-touch-icon" sizes="180x180"
+    href="//www-media.stanford.edu/assets/favicon/apple-touch-icon-180x180.png" />
+
+  <link rel="icon" type="image/png" href="//www-media.stanford.edu/assets/favicon/favicon-196x196.png"
+    sizes="196x196" />
+  <link rel="icon" type="image/png" href="//www-media.stanford.edu/assets/favicon/favicon-192x192.png"
+    sizes="192x192" />
+  <link rel="icon" type="image/png" href="//www-media.stanford.edu/assets/favicon/favicon-128.png" sizes="128x128" />
+  <link rel="icon" type="image/png" href="//www-media.stanford.edu/assets/favicon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/png" href="//www-media.stanford.edu/assets/favicon/favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="//www-media.stanford.edu/assets/favicon/favicon-16x16.png" sizes="16x16" />
+
+  <link rel="mask-icon" href="//www-media.stanford.edu/assets/favicon/safari-pinned-tab.svg" color="#ffffff">
+  <meta name="application-name" content="Stanford University" />
+  <meta name="msapplication-TileColor" content="#FFFFFF" />
+  <meta name="msapplication-TileImage" content="//www-media.stanford.edu/assets/favicon/mstile-144x144.png" />
+  <meta name="msapplication-square70x70logo" content="//www-media.stanford.edu/assets/favicon/mstile-70x70.png" />
+  <meta name="msapplication-square150x150logo" content="//www-media.stanford.edu/assets/favicon/mstile-150x150.png" />
+  <meta name="msapplication-square310x310logo" content="//www-media.stanford.edu/assets/favicon/mstile-310x310.png" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QZ38WT2YPD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-QZ38WT2YPD');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://kit.fontawesome.com/19914a84eb.js" crossorigin="anonymous"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+
+<section class="hero is-link is-fullheight video" style="overflow: hidden; position:relative;">
+  <div class="hero-video" style="height: 100%; width: 177.77777778vh; min-width: 100%;min-height: 56.25vw;">
+    <video playsinline autoplay muted loop>
+      <source src=" ./static/videos/DoorBot_projectpage_compressed.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="hero-video is-hidden-tablet is-inline-block-mobile"
+    style="height: 154.28571428vw; width: 100%; min-width:64.81481481vh;min-height:100%;">
+    <video playsinline autoplay muted loop>
+      <source src=" ./static/videos/DoorBot_projectpage_compressed.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="overlay"></div>
+  <!-- Hero head: will stick at the top -->
+  <div class="hero-head is-hidden-mobile">
+    <header class="navbar">
+      <div class="container is-size-5">
+        <div class="navbar-menu">
+          <div class="navbar-end">
+            <a class="navbar-item pl-4 pr-4" href="https://tx-leo.github.io/data/ICRA2025_DoorBot.pdf">
+              <span class="icon" style="margin-right:5px;">
+                <img src="./static/images/pdf.svg" alt="PDF" />
+              </span>
+              <span>Paper</span>
+            </a>
+            <!-- <a class="navbar-item  pl-4 pr-4" href="https://arxiv.org/abs/2407.10353">
+              <span class="icon" style="margin-right:5px;">
+                <img src="./static/images/arxiv.svg" alt="ArXiv" />
+              </span>
+              <span>arXiv</span> 
+            </a> -->
+            <a href="https://youtu.be/_7GVSsXtLFg" class="navbar-item  pl-4 pr-4">
+              <span class="icon" style="margin-right:5px;">
+                <img src="./static/images/youtube.svg" alt="Youtube" />
+              </span>
+              <span>Video</span> 
+            </a>
+            <span class="navbar-item  pl-4 pr-4">
+              <a href="https://github.com/TX-Leo/DoorBot" class="button is-inverted is-large">
+                <span class="icon">
+                  <i class="fab fa-github"></i>
+                </span>
+                <span>Code</span>
+              </a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </header>
+  </div>
+
+  <!-- Hero content: will be in the middle -->
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <h1 class="title is-1 publication-title is-size-1-mobile" style="font-size: 12rem;">
+        DoorBot
+      </h1>
+      <h1 class="subtitle is-1 publication-title is-size-4-mobile" style="font-size: 4rem;">
+        Closed-Loop Task Planning and Manipulation <br class="is-hidden-mobile">for Door Opening in the Wild <br class="is-hidden-mobile">with Haptic Feedback
+      </h1>
+      <h1 class="is-2 is-italic is-size-4-mobile" style="font-size: 2rem; opacity: 80%;">
+        <strong>
+            <a href="https://tx-leo.github.io/">Zhi Wang</a>*,&nbsp;&nbsp;
+            <a href="https://scholar.google.com/citations?user=zzpPyQwAAAAJ&hl=en">Yuchen Mo</a>*,&nbsp;&nbsp;
+            <a href="https://leumasnij.github.io//">Shengmiao Jin</a>,&nbsp;&nbsp;
+            <a href="https://siebelschool.illinois.edu/about/people/all-faculty/yuanwz">Wenzhen Yuan</a>&nbsp;&nbsp;
+        </strong>
+      </h1>
+      <br>
+      <br>
+      <h1 class="is-2 is-italic is-size-4-mobile" style="font-size: 2rem; opacity: 80%;">
+        IEEE international Conference on Robotics and Automation (ICRA), 2025, Under Review
+      </h1>
+      <div class="column has-text-centered is-hidden-tablet">
+        <div class="publication-links">
+          <!-- PDF Link. -->
+          <span class="link-block">
+            <a href="https://tx-leo.github.io/data/ICRA2025_DoorBot.pdf" class="external-link button is-normal is-rounded is-dark">
+              <span class="icon">
+                <img src="./static/images/pdf.svg" alt="PDF" />
+              </span>
+              <span>Paper</span>
+            </a>
+          </span>
+          <!-- arXiv Link. -->
+          <span class="link-block">
+            <a href="https://arxiv.org/abs/2407.10353" class="external-link button is-normal is-rounded is-dark">
+              <span class="icon">
+                <img src="./static/images/arxiv.svg" alt="ArXiv" />
+              </span>
+              <span>arXiv</span>
+            </a>
+          </span>
+          <!-- Video Link. -->
+          <span class="link-block">
+            <a href="https://youtu.be/_7GVSsXtLFg" class="external-link button is-normal is-rounded is-dark">
+              <span class="icon">
+                <img src="./static/images/youtube.svg" alt="Youtube" />
+              </span>
+              <span>Video</span>
+            </a>
+          </span>
+          <!-- Code Link. -->
+          <span class="link-block">
+            <a href="https://github.com/TX-Leo/DoorBot"
+              class="external-link button is-normal is-rounded is-dark">
+              <span class="icon">
+                <i class="fab fa-github"></i>
+              </span>
+              <span>Code</span>
+            </a>
+          </span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Hero footer: will stick at the bottom -->
+  <div class="hero-foot is-hidden-mobile">
+    <nav class="tabs is-boxed is-fullwidth is-size-5">
+      <ul>
+        <li><a href="#umi">Robot Data without Robots</a></li>
+        <li><a href="#task-tracking">Task Tracking without Simulating Tasks</a></li>
+        <li><a href="#wbc">Whole-body Controller</a></li>
+        <li><a href="#hardware">Hardware & System</a></li>
+        <li><a href="#qa">Q & A</a></li>
+      </ul>
+    </nav>
+  </div>
+</section>
+
+
+<section class="hero">
+    <div class="hero-body">
+      <div class="container">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- PDF Link. -->
+                <span class="link-block">
+                  <a href="https://tx-leo.github.io/data/ICRA2025_DoorBot.pdf"
+                     class="external-link button is-normal is-rounded is-dark" target="_blank">
+                    <span class="icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+                <!-- arXiv Link. -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2406.06005"
+                     class="external-link button is-normal is-rounded is-dark" target="_blank">
+                    <span class="icon">
+                        <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>ArXiv</span>
+                  </a>
+                </span>
+                <!-- Twitter Link. -->
+                <span class="link-block">
+                  <a href="https://x.com/_wenlixiao/status/1801305252760850903"
+                     class="external-link button is-normal is-rounded is-dark" target="_blank">
+                    <span class="icon">
+                        <i class="fab fa-twitter"></i>
+                    </span>
+                    <span>Summary</span>
+                  </a>
+                </span>
+                <!-- Github Link. -->
+                <span class="link-block">
+                  <a href="https://github.com/TX-Leo/DoorBot"
+                     class="external-link button is-normal is-rounded is-dark" target="_blank">
+                    <span class="icon">
+                        <i class="fab fa-github"></i>
+                    </span>
+                    <span>Github</span>
+                  </a>
+                </span>
+                <!-- Video Link. -->
+                <span class="link-block">
+                  <a href="https://youtu.be/_7GVSsXtLFg"
+                     class="external-link button is-normal is-rounded is-dark" target="_blank">
+                    <span class="icon">
+                        <i class="fab fa-youtube"></i>
+                    </span>
+                    <span>Video</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+<section class="section" id="video">
+  <div class="container is-max-desktop">
+    <h2 class="title is-1 has-text-centered is-size-4-mobile">Overview of DoorBot</h2>
+    <iframe width="100%" style="aspect-ratio: 16 / 9;" src="
+    https://youtu.be/_7GVSsXtLFg" title="Overview of DoorBot"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
+</section>
+
+<section class="section is-small" id="umi">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+
+        <h2 class="title is-1 has-text-centered is-size-4-mobile">Method</h2>
+        <div class="content">
+          <p>
+            We propose a hierarchical closed-loop controller to help a mobile robot automatically open various doors and walk through them in open environments. Our method can robustly generalize to different handles in the wild.
+          </p>
+          <img src="./static/images/teaser.png" alt="espresso-and-latte" style="width: 200%;" class="image">
+        </div>
+
+        <div class="content">
+            <p>
+              We propose a hierarchical closed-loop controller to help a mobile robot automatically open various doors and walk through them in open environments. Our method can robustly generalize to different handles in the wild.
+            </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<video autoplay muted loop playsinline width="100%">
+  <source src="./static/videos/umi-grid-small.mp4" type="video/mp4">
+</video>
+
+
+<section class="section is-large" id="overview">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column has-text-justified is-four-fifths  is-hidden-mobile">
+        <h2 class="subtitle">
+          Training on UMI demonstrations gives a policy that outputs gripper movements from image inputs.
+          But how should the dog's legs move to track those gripper movements? 🤔
+        </h2>
+      </div>
+      <div class="column has-text-justified is-four-fifths is-hidden-tablet">
+        <p>
+          Training on UMI demonstrations gives a policy that outputs gripper movements from image inputs.
+          But how should the dog's legs move to track those gripper movements? 🤔
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section is-small has-background-black has-text-light" id="task-tracking">
+  <div class="container is-max-desktop">
+
+    <h2 class="title is-1 has-text-white  is-size-4-mobile">Task Tracking without Simulating Tasks</h2>
+    <div class="content has-text-justified">
+      <p>
+        The promise of simulation engines is that of infinite data.
+        However, hidden in the terms and conditions that no one reads is the painful process of acquiring assets,
+        defining dense rewards,
+        rendering diverse
+        scenes, not to mention the sim-to-real gap 🙃.
+        All these problems are side-stepped or well-studied if we only use simulation to learn
+        whole-body
+        controllers.
+      </p>
+    </div>
+
+    <div class="content has-text-justified">
+      <p>
+        In a massively parallelized simulation, our robot learns through trial-and-error how to track UMI gripper
+        movements with stability and precision.
+      </p>
+    </div>
+  </div>
+</section>
+
+<video autoplay muted loop playsinline height="100%">
+  <source src="./static/videos/sim-small.mp4" type="video/mp4">
+</video>
+
+
+
+<section class="section is-small" id="wbc">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths is-centered">
+        <h2 class="title is-3 has-text-centered is-size-5-mobile">What makes a Whole-body Controller
+          "Manipulation-Centric"?
+        </h2>
+
+
+        <div class="content has-text-justified">
+          <p>
+            Manipulation policies typically predict gripper movements in a fixed world frame, and assumes that the robot
+            track those movements with <b>stability ⚖️</b> and <b>precision 🎯</b>.
+            This is exactly what we set out to learn with our manipulation-centric whole-body controller.
+          </p>
+
+        </div>
+
+
+        <video autoplay muted loop playsinline height="100%">
+          <source src="./static/videos/stable-tracking-small.mp4" type="video/mp4">
+        </video>
+
+        <div class="content has-text-justified" id="stable-tracking">
+          <p>
+            <b>Stability ⚖️</b>
+            Our controller tracks gripper movements in the world frame, instead of the body frame like <a
+              href="#wbc-prior-works">most prior
+              works</a>.
+            This means if you push the robot's body, its arm will move in the opposite direction to compensate, as seen
+            above.
+            Now that's what I call a 6 DoF <a href="https://github.com/chvmp/chicken_head">chicken head</a> 🐔!
+          </p>
+        </div>
+
+
+
+
+        <video autoplay muted loop playsinline height="100%">
+          <source src="./static/videos/wbc-precision-small.mp4" type="video/mp4">
+        </video>
+        <div class="content has-text-justified" id="precise-tracking">
+          <p>
+            <b>Precision 🎯</b>
+            We give our controller a trajectory of gripper targets into the future, which allows it to anticipate future
+            gripper movements and reach all targets precisely.
+            For instance, in tossing a tennisball, the robot can brace its body for a high-velocity toss, planting its
+            front legs into the ground to supply enough tossing force.
+            Meanwhile, in pushing a heavy kettlebell, the robot can mobilize all its legs, knowing that it will have to
+            continue pushing forwards in the seconds to come.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section is-small" id="hardware">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-1 has-text-centered is-size-4-mobile">Meet Espresso and Oat Milk!</h2>
+        <div class="content">
+          <p>
+            Following our lab's <a href="https://real.stanford.edu/lab.html#robot-grid">caffinated drinks naming
+              tradition</a>, I've decided to name our quadruped Espresso and our new arm Oat Milk.
+            My hope is that, when combined together, Espresso and Oat Milk will be as capable as Latte (our UR5 which
+            has <a href="https://flingbot.cs.columbia.edu/">unfolded</a> and <a
+              href="https://clothfunnels.cs.columbia.edu/">folded</a> cloths and <a
+              href="https://umi-gripper.github.io/">washed dishes</a>).
+            Deploying policies from Latte to Espresso and Oat Milk, as we've done, is the first step 🚀.
+          </p>
+        </div>
+        <img src="./static/images/espresso-and-latte.jpeg" alt="espresso-and-latte" />
+
+        <div class="content">
+          <p>
+            Espresso - Oat Milk comes with a GoPro on its head 🎩, a 3D printed gripper at the end of its arm 🦾, and an
+            iPhone on its butt
+            🍑.
+            The GoPro streams visual observations through a capture card, serving as the policy observation.
+            Meanwhile, the iPhone runs a custom iOS app we developed, which streams the robot's body pose, allowing <a
+              href="stable-tracking">world frame stabilization</a>.
+          </p>
+        </div>
+
+
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="box pt-6 pb-6">
+      <div class="columns is-max-desktop is-centered ">
+        <div class="column is-four-fifths is-centered">
+          <h2 class="title is-2 has-text-centered is-size-5-mobile">Try out UMI on Legs!</h2>
+          <video autoplay muted loop playsinline width="100%">
+            <!-- <source src="./static/videos/cup-in-the-wild-small.mp4" type="video/mp4"> -->
+            <source src="./static/videos/failures-small.mp4" type="video/mp4">
+          </video>
+          <div class="content">
+            Quadruped manipulation has lots of moving parts, and any small bug can lead to a big mess 🤕
+            We've spent a lot of time figuring out the networking, operating systems, and hardware.
+            We've broken 3 quadruped legs, fried 1 Jetson, and ripped one pair of pants, so you don't have to 👖
+          </div>
+          <div class="content">
+          </div>
+          <div class="has-text-centered">
+            <a href="https://github.com/real-stanford/umi-on-legs">
+              <button class="button is-primary">Download Code</button>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section is-small">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 is-size-4-mobile">Our Team</h2>
+    <div class="container has-text-centered">
+      <div class="publication-authors is-flex justify-content is-justify-content-space-around is-hidden-mobile">
+        <div class="author-block has-text-centered has-addons-centered">
+          <figure class="image is-128x128">
+            <a href="https://www.cs.columbia.edu/~huy/">
+              <img class="is-rounded
+                      " src="./static/images/huy.jpg" alt="Huy Ha">
+            </a>
+          </figure>
+          <a href="https://www.cs.columbia.edu/~huy/">Huy Ha</a><sup>*,1,2</sup>
+        </div>
+        <div class="author-block has-text-centered has-addons-centered">
+          <figure class="image is-128x128">
+            <a href="https://yihuai-gao.github.io/">
+              <img class="is-rounded
+                      " src="./static/images/yihuai.png" alt="Yihuai Gao">
+            </a>
+          </figure>
+          <a href="https://yihuai-gao.github.io/">Yihuai Gao</a><sup>*,1</sup>
+        </div>
+        <div class="author-block has-text-centered has-addons-centered">
+          <figure class="image is-128x128">
+            <a href="https://zipengfu.github.io/">
+              <img class="is-rounded
+                      " src="./static/images/zipeng.jpg" alt="Zipeng Fu">
+            </a>
+          </figure>
+          <a href="https://zipengfu.github.io/">Zipeng Fu</a><sup>1</sup>
+        </div>
+        <div class="author-block has-text-centered has-addons-centered">
+          <figure class="image is-128x128">
+            <a href="https://www.jie-tan.net/">
+              <img class="is-rounded
+                      " src="./static/images/jie.jpg" alt="Jie Tan">
+            </a>
+          </figure>
+          <a href="https://www.jie-tan.net/">Jie Tan</a><sup>3</sup>
+        </div>
+        <div class="author-block has-text-centered has-addons-centered">
+          <figure class="image is-128x128">
+            <a href="https://shurans.github.io/">
+              <img class="is-rounded
+                      " src="./static/images/shuran.jpg" alt="Shuran Song">
+            </a>
+          </figure>
+          <a href="https://shurans.github.io/">Shuran Song</a><sup>1,2</sup>
+        </div>
+      </div>
+
+      <div class="is-flex is-flex-direction-row is-flex-wrap-wrap is-justify-content-space-evenly is-hidden-tablet">
+        <div class="author-block has-text-centered has-addons-centered">
+          <figure class="image  is-96x96">
+            <a href="https://www.cs.columbia.edu/~huy/">
+              <img class="is-rounded
+                      " src="./static/images/huy.jpg" alt="Huy Ha">
+            </a>
+          </figure>
+          <a href="https://www.cs.columbia.edu/~huy/">Huy Ha</a><sup>*,1,2</sup>
+        </div>
+        <div class="author-block has-text-centered has-addons-centered">
+          <figure class="image  is-96x96">
+            <a href="https://yihuai-gao.github.io/">
+              <img class="is-rounded
+                      " src="./static/images/yihuai.png" alt="Yihuai Gao">
+            </a>
+          </figure>
+          <a href="https://yihuai-gao.github.io/">Yihuai Gao</a><sup>*,1</sup>
+        </div>
+        <div class="author-block has-text-centered has-addons-centered">
+          <figure class="image is-96x96">
+            <a href="https://zipengfu.github.io/">
+              <img class="is-rounded
+                      " src="./static/images/zipeng.jpg" alt="Zipeng Fu">
+            </a>
+          </figure>
+          <a href="https://zipengfu.github.io/">Zipeng Fu</a><sup>1</sup>
+        </div>
+        <div class="author-block has-text-centered has-addons-centered">
+          <figure class="image  is-96x96">
+            <a href="https://www.jie-tan.net/">
+              <img class="is-rounded
+                      " src="./static/images/jie.jpg" alt="Jie Tan">
+            </a>
+          </figure>
+          <a href="https://www.jie-tan.net/">Jie Tan</a><sup>3</sup>
+        </div>
+        <div class="author-block has-text-centered has-addons-centered">
+          <figure class="image  is-96x96">
+            <a href="https://shurans.github.io/">
+              <img class="is-rounded
+                      " src="./static/images/shuran.jpg" alt="Shuran Song">
+            </a>
+          </figure>
+          <a href="https://shurans.github.io/">Shuran Song</a><sup>1,2</sup>
+        </div>
+      </div>
+
+
+
+      <div class="publication-authors">
+        <span class="author-block"><sup>1</sup>Stanford University, </span>
+        <span class="author-block"><sup>2</sup>Columbia University, </span>
+        <span class="author-block"><sup>3</sup>Google DeepMind, </span>
+        <span class="author-block">*Equal contribution</span>
+      </div>
+
+
+    </div>
+    <br>
+    <pre class="is-hidden-mobile"><code>@inproceedings{ha2024umilegs,
+  title={{UMI} on Legs: Making Manipulation Policies Mobile with Manipulation-Centric Whole-body Controllers},
+  author={Huy Ha and Yihuai Gao and Zipeng Fu and Jie Tan and Shuran Song},
+  year={2024},
+  booktitle={Proceedings of the 2024 Conference on Robot Learning},
+}</code></pre>
+    <p>
+      If you have any questions, please contact <a href="https://www.cs.columbia.edu/~huy/">Huy Ha</a> and <a
+        href="https://yihuai-gao.github.io/">Yihuai Gao</a> 🐕
+    </p>
+  </div>
+</section>
+
+
+
+<section class="section is-small" id="qa">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered ">
+      <div class="column is-four-fifths">
+        <h2 class="title is-4 has-text-centered is-size-5-mobile">Questions & Answers</h2>
+
+        <div class="block">
+          <h3 class="title is-6">
+            What can't this framework do?
+          </h3>
+          <p>
+            There is only a one-way communication from the manipulation visuo-motor policy to the whole-body
+            controller,
+            via an end-effector trajectory interface. This has two main drawbacks:<br><br>
+            <b>(1) Guarantee Reachability</b>.
+            Sometimes the manipulation policy would ask the controller to move to target poses it can't track, like
+            ones
+            that are too high or rotate the gripper by too much.
+            Ideally, the controller could communicate to the manipulation policy what the
+            hardware is capable of as well.
+            <br><br>
+            <b>(2) Track Multiple End-effectors</b>.
+            Ideally, our robots would involve their entire body in manipulation tasks, not just its gripper.
+            Towards involving the robot's feet, body, and arms in manipulation as well, the real-world data collection
+            platform,
+            manipulation-controller interface, and the whole-body controller formulation has some work to do.
+          </p>
+        </div>
+
+        <div class="block">
+          <h3 class="title is-6">
+            I want to build a foundation policy for robotics.
+            What can UMI on Legs teach me about how to go about it?
+          </h3>
+          <p>
+            Tossing was flashy, but the in-the-wild cup rearrangement task (shown below) changed my perspective on what
+            a foundation policy for robotics should look like.
+            <video autoplay muted loop playsinline width="100%">
+              <source src="./static/videos/cup-in-the-wild-small.mp4" type="video/mp4">
+            </video>
+            We were able to just plug-and-play UMI's publicly released policy onto our robot dog (seen above in 1x
+            speed)!
+            With an expressive embodiment-agnostic interface in place, I'm optimistic about a world where people can
+            separately develop ever more general
+            visuo-motor policies and ever more robust WBCs, knowing that they can be plugged-and-played together in the
+            end.
+
+          </p>
+        </div>
+
+
+        <div class="block">
+          <h3 class="title is-6">
+            Can learning to track end-effector trajectories <i>really</i> result in kettlebell pushing?
+          </h3>
+          <p>
+            Yes, and no 🙃 Let me explain.<br><br>
+            Yes, because the kettlebell does get pushed to its target zone in our experiments, which technically
+            counts
+            as a success.
+            No, because the robot's behavior was not very elegant, despite the hardware being physically capable of
+            much
+            smoother, stronger pushes.
+            We've included mass, center of mass, and other joint domain randomization during training, but additionally
+            including force-torque perturbations at the end-effector during WBC
+            training could address take us a step closer to more robust pushing behaviors.
+          </p>
+        </div>
+
+
+        <div id="visualization-qa" class="block">
+          <h3 class="title is-6">What simulator do you use? Why does it look so realistic?</h3>
+          <p>
+            In this project, I use the <a href="https://developer.nvidia.com/isaac-gym">IsaacGym simulator</a> for
+            physics, but like many of my prior works, I use <a href="https://www.blender.org/">Blender</a> for
+            rendering (e.g., <a href="https://www.cs.columbia.edu/~huy/scalingup/">Scaling Up</a>, <a
+              href="https://flingbot.cs.columbia.edu/">FlingBot</a>).
+          </p>
+          <br>
+          <p>
+            Also, as in my prior works, I've published instructions for importing simulations into Blender.
+            If you're using IsaacGym, you can refer to this <a
+              href="https://github.com/real-stanford/umi-on-legs">project's codebase</a>.
+            If you're using PyBullet, you can use <a href="https://github.com/huy-ha/pybullet-blender-recorder">this
+              plugin</a> I developed for my <a href="https://github.com/real-stanford/decentralized-multiarm">multi-arm
+              motion planning project</a>.
+            If you're using MuJoCo, you can refer to the visualization instructions on my <a
+              href="https://github.com/real-stanford/scalingup/blob/master/docs/visualization.md">Scaling Up</a>'s
+            codebase.
+          </p>
+        </div>
+
+
+
+        <div class="block" id="wbc-prior-works">
+          <h3 class="title is-6">
+            Isn't this just <a href="https://manipulation-locomotion.github.io/">DeepWBC</a> or <a
+              href="https://wholebody-b1.github.io/">Visual Whole-Body Control</a>?
+          </h3>
+          <p>
+            These whole-body controllers are not manipulation-centric - they do not track end-effector trajectories in
+            task-frame.
+            Instead, they track instantaneous end-effector targets in body-frame, and depend on the quadruped's base
+            command.
+            This means their controllers can't be used to deploy existing table-top visuo-motor manipulation policies.
+          </p>
+        </div>
+      </div>
+</section>
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            Website template modified from <a href="https://nerfies.github.io/">NeRFies</a> and <a
+              href="https://www.cs.columbia.edu/~huy/scalingup/">Scaling Up Distilling Down</a>.
+          </p>
+          <p>
+            This website is licensed under a <a rel="license"
+              href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+              Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow and modify the <a
+              href="https://github.com/nerfies/nerfies.github.io">source
+              code</a> of this website as long as
+            you link back to the <a href="https://nerfies.github.io/">NeRFies</a> page in the footer.
+            Please remember to remove the analytics code included in the header of the website which
+            you do not want on your website.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+
+</html>
