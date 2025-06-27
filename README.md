@@ -11,7 +11,7 @@ DoorBot: Closed-Loop Task Planning and Manipulation for Door Opening in the Wild
 
 <sup>1</sup>University of Illinois at Urbana-Champaign, <sup>2</sup>Tsinghua University
 
-[[Website]](https://tx-leo.github.io/DoorBot)，[[Arxiv]](https://arxiv.org/abs/2504.09358)，[[Paper]](https://arxiv.org/pdf/2504.09358), [[Video]](https://youtu.be/_7GVSsXtLFg), [[UIUC Summary]](https://siebelschool.illinois.edu/news/doorbot)
+[[Website]](https://tx-leo.github.io/DoorBot), [[Arxiv]](https://arxiv.org/abs/2504.09358), [[Paper]](https://arxiv.org/pdf/2504.09358), [[Video]](https://youtu.be/_7GVSsXtLFg), [[UIUC Summary]](https://siebelschool.illinois.edu/news/doorbot)
 
 ![](images/teaser.png)
 
