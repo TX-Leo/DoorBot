@@ -1,7 +1,17 @@
-# DoorBot: Closed-Loop Task Planning and Manipulation for Door Opening in the Wild with Haptic Feedback
-This is the official repository for the paper: DoorBot: Closed-Loop Task Planning and Manipulation for Door Opening in the Wild with Haptic Feedback.
+# [ICRA'25] DoorBot: Closed-Loop Task Planning and Manipulation for Door Opening in the Wild with Haptic Feedback
+This is the official repository for the paper: 
 
-[[Website]](https://tx-leo.github.io/DoorBot) [[paper]](DoorBot_ICRA2025.pdf) [[video]](https://youtu.be/_7GVSsXtLFg)
+DoorBot: Closed-Loop Task Planning and Manipulation for Door Opening in the Wild with Haptic Feedback
+
+<a href="https://tx-leo.github.io/">Zhi Wang</a><sup>* 1,2</sup>, &nbsp;&nbsp;
+<a href="https://scholar.google.com/citations?user=zzpPyQwAAAAJ&hl=en">Yuchen Mo</a><sup>* 1</sup>, &nbsp;&nbsp;
+<a href="https://leumasnij.github.io//">Shengmiao Jin</a><sup>1</sup>, &nbsp;&nbsp;
+<a href="https://siebelschool.illinois.edu/about/people/all-faculty/yuanwz">Wenzhen Yuan</a><sup>1</sup>, &nbsp;&nbsp;
+<br>
+
+<sup>1</sup>University of Illinois at Urbana-Champaign, <sup>2</sup>Tsinghua University
+
+[[Website]](https://tx-leo.github.io/DoorBot)，[[Arxiv]](https://arxiv.org/abs/2504.09358)，[[Paper]](https://arxiv.org/pdf/2504.09358), [[Video]](https://youtu.be/_7GVSsXtLFg), [[UIUC Summary]](https://siebelschool.illinois.edu/news/doorbot)
 
 ![](images/teaser.png)
 
