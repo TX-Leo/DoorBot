@@ -136,3 +136,13 @@ With multi-modal feedback, our system can open the cabinet with an unknown unloc
 
 ![](images/gum_data.png)
 ![](images/map.png) -->
+
+## 7.Bibtex
+If you find our work helpful, please leave us a star and cite our paper. Thank you!
+
+@article{wang2025doorbot,
+  title={DoorBot: Closed-Loop Task Planning and Manipulation for Door Opening in the Wild with Haptic Feedback},
+  author={Wang, Zhi and Mo, Yuchen and Jin, Shengmiao and Yuan, Wenzhen},
+  journal={arXiv preprint arXiv:2504.09358},
+  year={2025}
+}
