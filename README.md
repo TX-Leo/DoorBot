@@ -142,7 +142,7 @@ If you find our work helpful, please leave us a star and cite our paper. Thank y
 
 @article{wang2025doorbot,
   title={DoorBot: Closed-Loop Task Planning and Manipulation for Door Opening in the Wild with Haptic Feedback},
-  author={Wang, Zhi and Mo, Yuchen and Jin, Shengmiao and Yuan, Wenzhen},
+  author={Wang, Zhi and Mo, Yuchen and Jin, Shengmiao and Yuan, Wenzhen},  
   journal={arXiv preprint arXiv:2504.09358},
   year={2025}
 }
