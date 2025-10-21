@@ -101,6 +101,7 @@ We create a dataset of 1,303 images featuring various door handles, collected fr
 Original dataset (before augmentation) can be found in [here (todo ...)](/docs/realman_software_doc.md).
 You can run [handle_data_augmentation.py](/open_door/gum_package/handle_data_augmentation.py) for data augmentation.
 
+[Update!] You can get the GUM dataset and model here: https://www.wolai.com/tx-leo/bUWZ27ZM9QdjWSpaEVEWpQ
 
 ### Training
 ```
